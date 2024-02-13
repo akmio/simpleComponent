@@ -51,7 +51,10 @@ class CIblocList extends CBitrixComponent
     // подготовка массива $arResult (метод подключается внутри класса try...catch)
     protected function getResult()
     {
+        global $CACHE_MANAGER;
+        
         if ($this->StartResultCache()){
+            $CACHE_MANAGER->RegisterTag('iblock_id_'.$this->arParams['IBLOCK_ID']);
 
             //Получаем элементы
             $dbProducts = \Bitrix\Iblock\ElementTable::getList([
